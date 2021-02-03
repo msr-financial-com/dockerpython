@@ -9,6 +9,8 @@ Here you can add additional extensions which are requierd by python
 #### Src Folder
 Place all your python code in this directory
 
+There is already some code in this directory which is an example of an Flask webserver which lets you sign up on the website. The data would be stored in a database.
+
 #### dockerfile
 This file will define the docker container image.
 
