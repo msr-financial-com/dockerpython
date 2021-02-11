@@ -16,4 +16,4 @@ This file will define the docker container image.
 
 Run this to build the image for an container:
 
-docker build `docker build -t <imagename> .`
+`docker build -t <imagename> .`
