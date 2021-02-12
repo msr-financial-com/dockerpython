@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, json
 from flaskext.mysql import MySQL
 from werkzeug.security import generate_password_hash, check_password_hash
+import os
 
 #Initialize Flask
 app = Flask(__name__)
@@ -9,11 +10,11 @@ app = Flask(__name__)
 mysql = MySQL(app)
 
 #MySQL config
-app.config['MYSQL_HOST'] = '192.168.178.129'
-app.config['MYSQL_PORT'] = '3306'
-app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = 'root'
-app.config['MYSQL_DB'] = 'BucketList'
+app.config['MYSQL_HOST'] = os.environ.get('host')
+app.config['MYSQL_PORT'] = os.environ.get('mysql_port')
+app.config['MYSQL_USER'] = os.environ.get('mysql_user')
+app.config['MYSQL_PASSWORD'] = os.environ.get('mysql_password')
+app.config['MYSQL_DB'] = os.environ.get('mysql_db')
 
 mysql.init_app(app)
 
@@ -54,7 +55,7 @@ def signUp():
    #Make sure everything is good
    data = cursor.fetchall()
 
-   if len(data) is 0:
+   if len(data) == 0:
        conn.commit()
        return json.dumps({'message':'User created successfully !'})
    else:

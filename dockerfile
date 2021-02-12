@@ -13,5 +13,12 @@ RUN pip install -r requirements.txt
 # copy the content of the src directory to the working directory
 COPY src/ .
 
+# set environment variables
+ENV host=localhost
+ENV mysql_port=3306
+ENV mysql_user=root
+ENV mysql_password=root
+ENV mysql_db=BucketList
+
 # command to run on container start
-CMD ["python", "server.py"] 
+CMD gunicorn --bind 0.0.0.0:5000 server:app
