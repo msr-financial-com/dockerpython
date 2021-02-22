@@ -21,4 +21,4 @@ ENV mysql_password=root
 ENV mysql_db=BucketList
 
 # command to run on container start
-CMD gunicorn --bind 0.0.0.0:5000 server:app
+CMD gunicorn --bind 0.0.0.0:5000 server2:app
